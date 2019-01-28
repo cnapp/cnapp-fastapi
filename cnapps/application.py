@@ -37,6 +37,7 @@ def creates_app():
 
     LOGGER.info("Create application %s", app_version.RELEASE)
     app = fastapi.FastAPI(
+        version=app_version.RELEASE,
         title=settings.PROJECT_NAME,
         openapi_url="/api/%s/openapi.json" % core.PATH)
     app.include_router(health.router)
