@@ -1,0 +1,7 @@
+# Dev
+venv
+build
+dist
+.tox
+.git
+

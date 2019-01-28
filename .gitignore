@@ -1,0 +1,14 @@
+# Editors
+*~
+.vscode
+
+# Python
+*.pyc
+venv
+build
+.cache
+.tox
+.coverage
+.pytest_cache/
+htmlcov/
+__pycache__/
