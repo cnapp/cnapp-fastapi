@@ -3,7 +3,7 @@
 Features:
 
 * [x] Logging
-* [ ] Metrics
+* [x] Metrics
 * [ ] Tracing
 
 ## Local
