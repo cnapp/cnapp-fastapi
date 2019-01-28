@@ -17,6 +17,7 @@ import time
 
 import fastapi
 from starlette import staticfiles
+import starlette_prometheus
 
 from cnapps.api import health
 from cnapps.api import version
@@ -49,6 +50,8 @@ def creates_app():
     app.include_router(version.router)
     app.include_router(web.router)
     app.include_router(core.api_router, prefix="/api/%s" % core.PATH)
+    app.add_middleware(starlette_prometheus.PrometheusMiddleware)
+    app.add_route("/metrics/", starlette_prometheus.metrics)
     return app
 
 
