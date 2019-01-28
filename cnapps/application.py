@@ -16,6 +16,7 @@ import logging
 import time
 
 import fastapi
+from starlette import staticfiles
 
 from cnapps.api import health
 from cnapps.api import version
@@ -23,6 +24,7 @@ from cnapps.api.v1 import core
 from cnapps.middleware.logging import log
 from cnapps import settings
 from cnapps import version as app_version
+from cnapps import web
 
 
 LOGGER = logging.getLogger(__name__)
@@ -39,9 +41,13 @@ def creates_app():
     app = fastapi.FastAPI(
         version=app_version.RELEASE,
         title=settings.PROJECT_NAME,
-        openapi_url="/api/%s/openapi.json" % core.PATH)
+        openapi_url="/api/%s/openapi.json" % core.PATH,
+        template_directory='templates'
+        )
+    app.mount('/static', staticfiles.StaticFiles(directory='cnapps/static'), name='static')
     app.include_router(health.router)
     app.include_router(version.router)
+    app.include_router(web.router)
     app.include_router(core.api_router, prefix="/api/%s" % core.PATH)
     return app
 

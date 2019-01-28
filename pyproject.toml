@@ -16,6 +16,7 @@ daiquiri = "^1.5"
 uvicorn = "=0.3.32"
 aiofiles = "^0.4.0"
 fastapi = "^0.1.18"
+jinja2 = "^2.10"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.1"
